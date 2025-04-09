@@ -1129,6 +1129,8 @@ func (dht *FullRT) bulkMessageSend(ctx context.Context, keys []peer.ID, fn func(
 		chunkSize = 1
 	}
 
+	logger.Infof("chunkSize: %d, len(sortedKeys): %d, dht.bucketSize: %d, numPeers: %d", chunkSize, len(sortedKeys), dht.bucketSize, numPeers)
+
 	connmgrTag := fmt.Sprintf("dht-bulk-provide-tag-%d", rand.Int())
 
 	type workMessage struct {
