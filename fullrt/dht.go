@@ -134,7 +134,7 @@ type FullRT struct {
 func NewFullRT(h host.Host, protocolPrefix protocol.ID, options ...Option) (*FullRT, error) {
 	fullrtcfg := config{
 		crawlInterval:          time.Hour,
-		bulkSendParallelism:    20,
+		bulkSendParallelism:    40,
 		waitFrac:               0.3,
 		timeoutPerOp:           5 * time.Second,
 		ipDiversityFilterLimit: amino.DefaultMaxPeersPerIPGroup,
