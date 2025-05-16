@@ -1638,3 +1638,9 @@ func hasValidConnectedness(host host.Host, id peer.ID) bool {
 	connectedness := host.Network().Connectedness(id)
 	return connectedness == network.Connected || connectedness == network.Limited
 }
+
+func (dht *FullRT) WithRoutingTableLock(fn func()) {
+	dht.rtLk.Lock()
+	defer dht.rtLk.Unlock()
+	fn()
+}
