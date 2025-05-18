@@ -1640,11 +1640,11 @@ func hasValidConnectedness(host host.Host, id peer.ID) bool {
 }
 
 func (dht *FullRT) WithRoutingTableLock(fn func()) {
-	logger.Infof("🔒 Acquiring RLock on routing table")
-	dht.rtLk.RLock()
-	logger.Infof("✅ Acquired RLock, executing fn()")
+	logger.Infof("🔒 Acquiring Lock on routing table")
+	dht.rtLk.Lock()
+	logger.Infof("✅ Acquired Lock, executing fn()")
 	fn()
 	logger.Infof("✅ Finished fn()")
-	dht.rtLk.RUnlock()
-	logger.Infof("🔓 Released RLock on routing table")
+	dht.rtLk.Unlock()
+	logger.Infof("🔓 Released Lock on routing table")
 }
